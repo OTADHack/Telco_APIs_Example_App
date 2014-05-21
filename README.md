@@ -44,9 +44,9 @@ The main content is located in the `assets -> www -> index.html` file:
 Documentation
 ----
 
-Payment Documentation can be found at [Oracle's TADHack Payment website](http://tadhack.optaresolutions.com/?page_id=102).
-Messaging Documentation can be found at [Oracle's TADHack Messaging website](http://tadhack.optaresolutions.com/?page_id=87).
-Location Documentation can be found at [Oracle's TADHack Location website](http://tadhack.optaresolutions.com/?page_id=94).
++ Payment Documentation can be found at [Oracle's TADHack Payment website](http://tadhack.optaresolutions.com/?page_id=102).
++ Messaging Documentation can be found at [Oracle's TADHack Messaging website](http://tadhack.optaresolutions.com/?page_id=87).
++ Location Documentation can be found at [Oracle's TADHack Location website](http://tadhack.optaresolutions.com/?page_id=94).
 
 Support
 ----
