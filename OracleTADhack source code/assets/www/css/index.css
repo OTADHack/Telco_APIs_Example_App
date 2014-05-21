@@ -1,0 +1,14 @@
+.home_tagline {
+    color: #404040;
+    font-size: 15px;
+    margin: 0 auto;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+.ui-header, .ui-title, .ui-footer{
+   
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+

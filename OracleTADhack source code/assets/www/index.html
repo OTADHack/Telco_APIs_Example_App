@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=medium-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+		
+        <title>Oracle TADhack</title>
+    </head>
+    <body>
+        <!-- Main page - Index -->
+		<div data-role="page" id="main" name="app" >
+            <div data-role="header" data-position="fixed"  data-theme="d">
+    			<h1>TADhack with Oracle</h1>
+			</div>
+    			  
+        	<div data-role="content">	
+				<div style="text-align: center;"><img src="img/tadhack.jpg" rel="external"  data-theme="b"/></div>
+				<div style="text-align: center;"><img src="img/oracle_comm.jpg" width="160" rel="external"  data-theme="b"/>  <img src="img/optare.jpg" width="160" rel="external"  data-theme="b"/></div>
+				<br>
+				<div class="home_tagline"><b>Please select the API you want to test</b></div>
+				<div data-role="fieldcontain">
+					<a href="#paymentPage" data-role="button" > Payment </a> 
+					<a href="#messagingPage" data-role="button" > Messaging </a> 
+					<a href="#locationPage" data-role="button" > Location </a> 
+				</div>
+			
+			</div>
+			
+            <div data-role="footer" data-position="fixed"  data-theme="d">
+        			<h1> by Optare Solutions</h1>
+    		</div>
+        </div>
+		
+		
+        <!-- Payment Page -->
+        <div id="paymentPage" data-role="page" >
+                <div data-role="header" data-position="fixed" data-theme="d">
+        			<h1>Payment with Oracle</h1>
+    			</div>
+    			
+        		<div data-role="content">	
+					<div class ="home_tagline"> Enter info for the payment </div>
+					<div data-role="fieldcontain">
+						<label for="txtMsisdn"> Phone Number: </label>
+						<input type="number" id="txtMsisdn" name="txtMsisdn" value="1234" readonly/>
+						<label for="txtDescription"> Description: </label>
+						<input type="text" id="txtDescription" name="txtDescription" data-clear-btn="true" value="a pair of shoes" />
+						<label for="txtAmount"> Amount to pay (USD): </label>
+						<input type="number" id="txtAmount" name="txtAmount" data-clear-btn="true" value="10" />
+						<!--<a href="#pinPage" id="btnPaymentOneApi" data-role="button" > Begin payment </a>--> 
+						<a href="#pinPage" id="btnPaymentRest" data-role="button" > Begin payment </a> 
+					</div>
+				</div>
+
+    			<div data-role="footer" data-position="fixed" data-theme="d">
+        			<h1>by Optare Solutions</h1>
+    			</div>
+            
+        </div>
+		
+		
+        <!-- Messaging Page -->
+        <div id="messagingPage" data-role="page" >
+                <div data-role="header" data-position="fixed" data-theme="d">
+        			<h1>Messaging with Oracle</h1>
+    			</div>
+    			
+        		<div data-role="content">	
+					<div class ="home_tagline"> Enter info for sending SMS </div>
+					<div data-role="fieldcontain">
+						<label for="txtMsisdn"> Phone Number: </label>
+						<input type="number" id="txtMsisdn" name="txtMsisdn" data-clear-btn="true" value="1234"/>
+						<label for="txtMessage"> Message: </label>
+						<textarea rows="3" name="txtMessage" id="txtMessage">Hello TADHack from Sample App</textarea>						<!--<a href="#pinPage" id="btnPaymentOneApi" data-role="button" > Begin payment </a>--> 
+						<a href="#pinPage" id="btnMessageRest" data-role="button" > Send Message </a> 
+					</div>
+				</div>
+
+    			<div data-role="footer" data-position="fixed" data-theme="d">
+        			<h1>by Optare Solutions</h1>
+    			</div>           
+        </div>
+		
+        <!-- Location Page -->
+        <div id="locationPage" data-role="page" >
+                <div data-role="header" data-position="fixed" data-theme="d">
+        			<h1>Location with Oracle</h1>
+    			</div>
+    			
+        		<div data-role="content">	
+					<div class ="home_tagline"> Enter info for requesting location </div>
+					<div data-role="fieldcontain">
+						<label for="txtMsisdn"> Phone Number: </label>
+						<input type="number" id="txtMsisdn" name="txtMsisdn" data-clear-btn="true" value="1234"/>
+						<a href="#pinPage" id="btnLocationRest" data-role="button" > Request Location </a> 
+					</div>
+				</div>
+
+    			<div data-role="footer" data-position="fixed" data-theme="d">
+        			<h1>by Optare Solutions</h1>
+    			</div>           
+        </div>
+		
+        <!-- Ok Page -->		
+		<div id="okPage" data-role="page" >
+                <div data-role="header" data-position="fixed" data-theme="d">
+        			<a href="#main" id="backButton" data-role="button" data-icon="back"> Back </a>
+					<h1>TADhack with Oracle</h1>
+    			</div>
+    			
+				<div data-role="content">	
+					<div class="home_tagline">Transaction realized with success!</div>
+					<div style="text-align: center;"><img src="img/blue-ok-icon.png" rel="external"  data-theme="d"/></div>
+				</div>
+
+    			<div data-role="footer" data-position="fixed" data-theme="d">
+        			<h1>by Optare Solutions</h1>
+    			</div>
+            
+        </div>
+		
+        <!-- Ok Location Page -->		
+		<div id="okLocationPage" data-role="page" >
+                <div data-role="header" data-position="fixed" data-theme="d">
+        			<a href="#main" id="backButton" data-role="button" data-icon="back"> Back </a>
+					<h1>TADhack with Oracle</h1>
+    			</div>
+    			
+				<div data-role="content">	
+					<div class="home_tagline">Location request executed with success!
+					<ul>
+					<li type=disc><b> latitude : </b> <span id="latitude">xxx</span></li>
+					<li type=disc><b> longitude : </b> <span id="longitude">xxx</span></li>
+					<li type=disc><b> altitude : </b> <span id="altitude">xxx</span></li>
+					</ul>
+					</div>
+					<div style="text-align: center;"><img src="img/blue-ok-icon.png" rel="external"  data-theme="b"/></div>
+				</div>
+
+    			<div data-role="footer" data-position="fixed" data-theme="d">
+        			<h1>by Optare Solutions</h1>
+    			</div>
+            
+        </div>
+		
+        <!-- Ko Page -->
+		<div id="koPage" data-role="page" >
+                <div data-role="header" data-position="fixed" data-theme="d">
+        			<a href="#main" id="backButton" data-role="button" data-icon="back"> Back </a>
+					<h1>TADhack with Oracle</h1>
+    			</div>
+    			
+				<div data-role="content">	
+					<div class="home_tagline">Sorry. An error ocurred in transaction</div>
+					<div style="text-align: center;"><img src="img/blue-error-icon.png" rel="external"  data-theme="d"/></div>
+				</div>
+
+    			<div data-role="footer" data-position="fixed" data-theme="d">
+        			<h1>by Optare Solutions</h1>
+    			</div>
+            
+        </div>
+        
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="index.js"></script>
+        <script type="text/javascript">
+            // initialize phonegap
+			app.initialize();
+        </script>
+        <script  type="text/javascript">
+			
+			// Your credentials for TADhack
+        	var env = "ocsg.optaresolutions.com:8001"; 	// TADhack Environment
+        	var login = "YOUR_LOGIN";
+        	var pass = "YOUR_PASS";
+
+			/*
+        	// Your credentials for SDK
+        	var env = "localhost:13444";				// SDK Environment 
+        	var login = "domain_user";
+        	var pass = "domain_user";
+        	*/
+
+			console.log("#env = " + env);
+			console.log("#login = " + login);
+			console.log("#pass = " + pass);
+
+			$(document).ready(function(){
+			
+				// PAYMENT API (REST)
+				$("#btnPaymentRest").tap(function(){
+
+					console.log("#btnPayment (1) - Beginning Payment function");
+
+					// Recollect the app values
+					var phoneNumber = "tel:" + $("#txtMsisdn").val();
+		        	var description = $("#txtDescription").val();
+					var amount = $("#txtAmount").val();
+
+					// Other data
+		        	var currency = "USD";
+		        	var referenceCode = "REF-12345";     	
+					var sendData = {
+					  "charge": {
+					    "description": description,
+					    "amount": amount,
+					    "currency": currency
+					  },
+					  "endUserIdentifier": phoneNumber,
+					  "referenceCode": referenceCode
+					} 
+					
+					$.ajax({
+						type: "POST",
+					    url: "http://" + env + "/rest/payment/charge-amount" ,
+	   					beforeSend : function(xhr) {
+	      						// Authorize with your user/password
+      							xhr.setRequestHeader("Authorization", "Basic " + btoa(login + ":" + pass));
+      							// not using session to simplify
+      							xhr.setRequestHeader("X-Session-ID", "");
+	      						console.log("#$$sendData.stringify=" + JSON.stringify(sendData));	      						  						
+	    						},
+    					contentType: 'application/json',
+    					dataType: 'json',
+    					data:  JSON.stringify(sendData),
+
+						success: function (data) {
+							console.log("#btnPayment (40) - Payment ok!!!");
+							$.mobile.changePage("#okPage");
+						},
+    					error: function (data) {
+ 							console.log("#btnPayment (41) - Payment failed :-(");
+							console.log("#data.responseText=" + data.responseText);
+							console.log("#data.status=" + data.status);
+							$.mobile.changePage("#koPage");
+						}
+						
+					});
+
+					console.log("#btnPayment (50) - End!!!");
+		            return false;
+        		});				
+  				
+
+				// MESSAGING API (REST)
+				$("#btnMessageRest").tap(function(){
+
+					console.log("#btnMessage (1) - Beginning Messaging function");
+
+					// Recollect the app values
+					var phoneNumber = "tel:" + $("#txtMsisdn").val();
+		        	var message = $("#txtMessage").val();
+
+					// Other data
+					var sendData = {
+					  // Note that "addresses" is an array. You can add multiple addresses here
+					  "addresses": [ phoneNumber ],
+					  "message": message
+					}
+					
+					$.ajax({
+						type: "POST",
+					    url: "http://" + env + "/rest/sms/messages" ,
+	   					beforeSend : function(xhr) {
+	      						// set header
+      							xhr.setRequestHeader("Authorization", "Basic " + btoa(login + ":" + pass));
+      							// not using session to simplify
+      							xhr.setRequestHeader("X-Session-ID", "");
+	      						console.log("#$$sendData.stringify=" + JSON.stringify(sendData));	      						  						
+	    						},
+    					contentType: 'application/json',
+    					dataType: 'json',
+    					data:  JSON.stringify(sendData),
+
+						success: function (data) {
+							console.log("#btnMessage (40) - Message ok!!!");
+							$.mobile.changePage("#okPage");
+						},
+    					error: function (data) {
+ 							console.log("#btnMessage (41) - Message failed :-(");
+							console.log("#data.responseText=" + data.responseText);
+							console.log("#data.status=" + data.status);
+							
+							$.mobile.changePage("#koPage");
+						}
+						
+					});
+
+					console.log("#btnMessage (50) - End!!!");
+		            return false;
+        		});				
+
+
+				// LOCATION API (REST)
+				$("#btnLocationRest").tap(function(){
+
+					console.log("#btnLocation (1) - Beginning Location function");
+
+					// Recollect the app values
+					var phoneNumber = "tel:" + $("#txtMsisdn").val();
+
+					$.ajax({
+						// Note this is a GET method. We will add parameters to the URL
+						type: "GET",
+	   					url: "http://" + env + "/rest/terminal_location/location?query=%7B%20%20%20%22acceptableAccuracy%22%3A%20%22400%22%2C%20%20%20%22address%22%3A%20%22" + phoneNumber + "%22%2C%20%20%20%22requestedAccuracy%22%3A%20%22100%22%2C%20%20%20%22tolerance%22%3A%20%22DelayTolerant%22%20%7D" ,
+	   					beforeSend : function(xhr) {
+	      						// set header
+      							xhr.setRequestHeader("Authorization", "Basic " + btoa(login + ":" + pass));
+      							// not using session to simplify
+      							xhr.setRequestHeader("X-Session-ID", "");
+	      						//console.log("#$$sendData.stringify=" + JSON.stringify(sendData));	      						  						
+	    						},
+    					dataType: 'json',
+						success: function (data) {
+							console.log("#btnLocation (40) - Message ok!!!");
+							
+							// Recollect result variables from json structure
+							var latitude = data.result.latitude;							
+							console.log("#btnLocation latitude = " +  latitude);
+							$("#latitude").text(latitude);													
+							var longitude = data.result.longitude;
+							console.log("#btnLocation longitude = " +  longitude);
+							$("#longitude").text(longitude);													
+							var altitude = data.result.altitude;
+							console.log("#btnLocation altitude = " +  altitude);
+							$("#altitude").text(altitude);													
+							
+							$.mobile.changePage("#okLocationPage");
+						},
+    					error: function (data) {
+ 							console.log("#btnLocation (41) - Message failed :-(");
+							console.log("#data.responseText=" + data.responseText);
+							console.log("#data.status=" + data.status);					
+							$.mobile.changePage("#koPage");
+						}						
+					});
+					console.log("#btnLocation (50) - End!!!");
+		            return false;
+        		});				
+  				
+    		});
+			
+		</script>
+        
+    </body>
+</html>
