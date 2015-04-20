@@ -10,7 +10,7 @@ It allows to test the following Telco APIs:
 Version
 ----
 
-1.0
+1.1
 
 Usage
 ----
