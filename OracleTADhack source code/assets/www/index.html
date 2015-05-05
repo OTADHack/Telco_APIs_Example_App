@@ -335,15 +335,15 @@
     					dataType: 'json',
 						success: function (data) {
 							console.log("#btnLocation (40) - Message ok!!!");
-							
+
 							// Recollect result variables from json structure
-							var latitude = data.result.latitude;							
+							var latitude = data.terminalLocationList.terminalLocation[0].currentLocation.latitude;
 							console.log("#btnLocation latitude = " +  latitude);
 							$("#latitude").text(latitude);													
-							var longitude = data.result.longitude;
+							var longitude = data.terminalLocationList.terminalLocation[0].currentLocation.longitude;
 							console.log("#btnLocation longitude = " +  longitude);
 							$("#longitude").text(longitude);													
-							var altitude = data.result.altitude;
+							var altitude = data.terminalLocationList.terminalLocation[0].currentLocation.altitude;
 							console.log("#btnLocation altitude = " +  altitude);
 							$("#altitude").text(altitude);													
 							
