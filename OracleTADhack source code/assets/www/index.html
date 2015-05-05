@@ -74,7 +74,9 @@
         		<div data-role="content">	
 					<div class ="home_tagline"> Enter info for sending SMS </div>
 					<div data-role="fieldcontain">
-						<label for="txtMsisdn"> Phone Number: </label>
+						<label for="txtOriginMsisdn"> Your Phone Number: </label>
+						<input type="number" id="txtOriginMsisdn" name="txtOriginMsisdn" data-clear-btn="true" value="1111"/>
+						<label for="txtMsisdn"> Destination Phone Number: </label>
 						<input type="number" id="txtMsisdn" name="txtMsisdn" data-clear-btn="true" value="1234"/>
 						<label for="txtMessage"> Message: </label>
 						<textarea rows="3" name="txtMessage" id="txtMessage">Hello TADHack from Sample App</textarea>						<!--<a href="#pinPage" id="btnPaymentOneApi" data-role="button" > Begin payment </a>--> 
@@ -205,20 +207,29 @@
 
 					// Other data
 		        	var currency = "USD";
-		        	var referenceCode = "REF-12345";     	
-					var sendData = {
-					  "charge": {
-					    "description": description,
-					    "amount": amount,
-					    "currency": currency
-					  },
-					  "endUserIdentifier": phoneNumber,
-					  "referenceCode": referenceCode
-					} 
-					
+		        	var referenceCode = "REF-12345";
+		        	var sendData = {
+   						"amountTransaction":{
+      						"endUserId": phoneNumber,
+      						"paymentAmount":{
+         						"chargingInformation":{
+	            					"description": description,
+    	        					"amount": amount,
+        	    					"currency": currency
+         						},
+         						"chargingMetaData":{
+            						"taxAmount":"0"
+	         					}
+	    					},
+    	  					"transactionOperationStatus":"Charged",
+      						"referenceCode": referenceCode,
+      						"clientCorrelator":""
+   						}
+					}
+
 					$.ajax({
 						type: "POST",
-					    url: "http://" + env + "/rest/payment/charge-amount" ,
+					    url: "http://" + env + "/oneapi/1/payment/"+phoneNumber.replace(":","%3A")+"/transactions/amount" ,
 	   					beforeSend : function(xhr) {
 	      						// Authorize with your user/password
       							xhr.setRequestHeader("Authorization", "Basic " + btoa(login + ":" + pass));
@@ -255,18 +266,23 @@
 
 					// Recollect the app values
 					var phoneNumber = "tel:" + $("#txtMsisdn").val();
+					var originPhoneNumber = "tel:" + $("#txtOriginMsisdn").val();
 		        	var message = $("#txtMessage").val();
 
 					// Other data
 					var sendData = {
-					  // Note that "addresses" is an array. You can add multiple addresses here
-					  "addresses": [ phoneNumber ],
-					  "message": message
+						"outboundSMSMessageRequest":{
+							"address": phoneNumber,
+							"senderAddress": originPhoneNumber,
+							"outboundSMSTextMessage":{
+								"message": message
+							}
+						}
 					}
 					
 					$.ajax({
 						type: "POST",
-					    url: "http://" + env + "/rest/sms/messages" ,
+					    url: "http://" + env + "/oneapi/1/smsmessaging/outbound/" + originPhoneNumber.replace(":","%3A") + "/requests" ,
 	   					beforeSend : function(xhr) {
 	      						// set header
       							xhr.setRequestHeader("Authorization", "Basic " + btoa(login + ":" + pass));
@@ -308,7 +324,7 @@
 					$.ajax({
 						// Note this is a GET method. We will add parameters to the URL
 						type: "GET",
-	   					url: "http://" + env + "/rest/terminal_location/location?query=%7B%20%20%20%22acceptableAccuracy%22%3A%20%22400%22%2C%20%20%20%22address%22%3A%20%22" + phoneNumber + "%22%2C%20%20%20%22requestedAccuracy%22%3A%20%22100%22%2C%20%20%20%22tolerance%22%3A%20%22DelayTolerant%22%20%7D" ,
+	   					url: "http://" + env + "/oneapi/1/terminallocation/queries/location" + "?address="+phoneNumber+"&requestedAccuracy=100" ,
 	   					beforeSend : function(xhr) {
 	      						// set header
       							xhr.setRequestHeader("Authorization", "Basic " + btoa(login + ":" + pass));
